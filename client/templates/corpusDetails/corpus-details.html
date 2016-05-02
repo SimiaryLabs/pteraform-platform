@@ -1,0 +1,193 @@
+<md-card>
+  <md-toolbar style="min-height: 0px">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="Settings">
+        <md-icon>settings</md-icon>
+      </md-button>
+      <h1 class="md-display-1">{{corpusDetails.corpus.title}}</h1>
+          <div flex ng-cloak>
+            <md-fab-speed-dial md-open="false" md-direction="right" class="md-scale" ng-cloak>
+              <md-fab-trigger>
+                <md-button aria-label="menu" class="md-fab md-accent md-mini">
+                  <md-tooltip md-direction="bottom">
+                    Add document
+                  </md-tooltip>
+                  <md-icon icon="add">add</md-icon>
+                </md-button>
+              </md-fab-trigger>
+              <md-fab-actions>
+                <md-button aria-label="Upload" class="md-fab md-raised md-mini" ng-click="corpusDetails.showAddDocumentDialog($event,0)" ng-disabled="true">
+                  <md-tooltip md-direction="bottom">
+                    Upload local document
+                  </md-tooltip>
+                  <md-icon icon="file_upload" aria-label="Upload">file_upload</md-icon>
+                </md-button>
+                <md-button aria-label="Raw text" class="md-fab md-raised md-mini" ng-click="corpusDetails.showAddDocumentDialog($event,1)">
+                  <md-tooltip md-direction="bottom">
+                    Insert raw text
+                  </md-tooltip>
+                  <md-icon icon="keyboard" aria-label="Raw text">keyboard</md-icon>
+                </md-button>
+                <md-button aria-label="S3 Bucket" class="md-fab md-raised md-mini" ng-click="corpusDetails.showAddDocumentDialog($event,2)" ng-disabled="true">
+                  <md-tooltip md-direction="bottom">
+                    Insert from S3 Bucket
+                  </md-tooltip>
+                  <md-icon icon="cloud_download" aria-label="S3 Bucket">cloud_download</md-icon>
+                </md-button>
+                <md-button aria-label="Web page" class="md-fab md-raised md-mini" ng-click="corpusDetails.showAddDocumentDialog($event,3)" ng-disabled="true">
+                  <md-tooltip md-direction="bottom">
+                    Add web page text
+                  </md-tooltip>
+                  <md-icon icon="share" aria-label="Web page">share</md-icon>
+                </md-button>
+              </md-fab-actions>
+            </md-fab-speed-dial>
+          </div>
+      <span flex></span>
+
+      <md-button class="md-icon-button" aria-label="Collapse" ng-click="toggle('corpus')">
+        <md-icon>keyboard_arrow_left</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-card-content style="padding:0px">
+
+    <div layout="row" layout-fill>
+    <!-- <div layout="row" layout-sm="column">-->
+
+      <!--  <div flex="40"> -->
+      <div layout="column" flex>
+        <div layout="column" layout-padding >
+
+          <div layout="row">
+            <div flex>
+              <form name="corpusDetailsForm" ng-submit="corpusDetails.save()">
+                <div layout="column">
+
+                  <div flex>
+                    <md-input-container class="md-block">
+                      <label>Corpus title</label>
+                      <input name="corpusDetailsTitleInput" aria-label="editTitle" ng-model="corpusDetails.corpus.title" required>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                      <label>Description</label>
+                      <textarea name="corpusDetailsDescriptionInput" aria-label="editDescription" ng-model="corpusDetails.corpus.description"></textarea>
+                    </md-input-container>
+                  </div>
+
+                  <div flex layout="row" layout-sm="column" layout-align="center center">
+                    <md-button class="md-raised" ng-disabled="!(corpusDetails.changed())" ng-click="corpusDetails.revert()" >
+                      REVERT
+                    </md-button>
+                    <md-button class="md-primary md-raised" ng-disabled="!(corpusDetails.changed())" type="submit" >
+                      SAVE CHANGES
+                    </md-button>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <md-divider></md-divider>
+          <md-subheader class="md-primary">Geographic entities</md-subheader>
+          <!-- corpus D3 Map -->
+          <div layout="row">
+            <div flex style="max-width: 600px;" layout="column">
+              <corpus-d3-map></corpus-d3-map>
+            </div>
+            <div flex></div>
+          </div>
+
+
+        </div>
+
+      <!-- </div> -->
+
+      <md-divider></md-divider>
+      <md-subheader class="md-primary">Documents</md-subheader>
+      <div flex layout-padding>
+      <!-- <div flex="60"> -->
+        <!-- document list -->
+        <div layout="row" layout-padding>
+          <div flex="60" class="md-caption">Document title</div>
+          <div flex="20" class="md-caption">Modify date</div>
+          <div flex="10" class="md-caption">Geo-parsed</div>
+          <div flex="10" class="md-caption">Temporal-parsed</div>
+        </div>
+        <md-divider></md-divider>
+        <div dir-paginate="doc in corpusDetails.documents | itemsPerPage: corpusDetails.perPage" pagination-id="docpagination" total-items="corpusDetails.documentCount" current-page="corpusDetails.dlp" layout="row" layout-padding>
+          <div layout="col" ng-class-odd="'greyitem'" flex>
+            <div flex="60" ng-click="corpusDetails.openDocument(doc)">{{doc.title}}</div>
+            <div flex="20">{{doc.modifyDate | date}}</div>
+            <div flex="10" ng-if="doc.geoParsed">
+              <md-icon md-font-icon="public" class="md-primary">public</md-icon>
+              <!-- <i class="fa fa-check"></i> -->
+            </div>
+            <div flex="10" ng-if="!doc.geoParsed">
+              <md-icon md-font-icon="clear" class="md-warn">clear</md-icon>
+              <!-- <i class="fa fa-warning"></i> -->
+            </div>
+            <div flex="10" ng-if="doc.temporalParsed">
+              <md-icon md-font-icon="watch_later" class="md-primary">watch_later</md-icon>
+              <!-- <i class="fa fa-check"></i>-->
+            </div>
+            <div flex="10" ng-if="!doc.temporalParsed">
+              <md-icon md-font-icon="clear" class="md-warn">clear</md-icon>
+              <!-- <i class="fa fa-warning"></i> -->
+            </div>
+          </div>
+        </div>
+        <div layout="row">
+          <dir-pagination-controls on-page-change="corpusDetails.pageChanged(newPageNumber)" pagination-id="docpagination"></dir-pagination-controls>
+        </div>
+      </div>
+
+      </div>
+
+      <div class="md-whiteframe-z2 pt-accent pt-hue-1" style="color:white;width:60px">
+        <md-list>
+            <md-item >
+                <md-item-content layout="column" layout-align="start center">
+                  <div class="inset">
+                    <md-icon style="font-size:32px; height: 32px; width:32px">book</md-icon>
+                    <div class="md-caption md-body-2" style="text-align:center">
+                      {{ corpusDetails.documentCount }}
+                      <br>
+                      Docs
+                    </div>
+                  </div>
+                </md-item-content>
+            </md-item>
+
+            <md-item >
+                <md-item-content layout="column" layout-align="start center">
+                  <div class="inset">
+                    <md-icon style="font-size:32px; height: 32px; width:32px">public</md-icon>
+                    <div class="md-caption md-body-2" style="text-align:center">
+                      {{ corpusDetails.geoParsedCount }}
+                      <br>
+                      Places
+                    </div>
+                  </div>
+                </md-item-content>
+            </md-item>
+
+            <md-item >
+                <md-item-content layout="column" layout-align="start center">
+                  <div class="inset">
+                    <md-icon style="font-size:32px; height: 32px; width:32px">watch_later</md-icon>
+                    <div flex class="md-caption md-body-2" style="text-align:center">
+                      {{ corpusDetails.temporalParsedCount }}
+                      <br>
+                      Times
+                    </div>
+                  </div>
+                </md-item-content>
+            </md-item>
+
+        </md-list>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>

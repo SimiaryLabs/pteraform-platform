@@ -1,0 +1,41 @@
+<!--
+<md-card>
+  <md-card-content>
+-->
+    <!-- Open documents: -->
+    <div layout="row" layout-wrap>
+      <md-chips ng-model="openDocs" readonly="false">
+        <input ng-hide="true">
+        <md-chip-template>
+          <span ng-click="openDocumentsPanel.openDocument($chip)">{{$chip.title + " "}}</span>
+        </md-chip-template>
+        <button class="_md-chip-remove md-primary" ng-click="openDocumentsPanel.closeDocument($chip)">
+          <span ng-click="openDocumentsPanel.closeDocument($chip)"></span>
+        </button>
+      </md-chips>
+      <!-- <ul class="list-inline" layout-wrap> 
+        <li ng-repeat="(doc_id, doc) in openDocs"> -->
+
+<!--
+          <div class="truncate" flex=33 layout="row" ng-repeat="(doc_id, doc) in openDocs">
+            <div>
+              <md-button class="md-icon-button" aria-label="Close document" ng-click="openDocumentsPanel.closeDocument(doc)">
+                <md-icon md-icon="clear" class="md-mini">clear</md-icon>
+              </md-button>
+            </div>
+            <div>
+              <md-button class="md-primary" ng-click="openDocumentsPanel.openDocument(doc)">{{doc.title}}</md-button>
+            </div>
+          </div>
+-->
+<!--
+          <div class="truncate" ng-click="openDocumentsPanel.openDocument(doc)"><a class="waves-effect waves-light btn" ng-click="openDocumentsPanel.closeDocument(doc)"><i class="material-icons">clear</i></a>{{doc.title}}</div>
+
+        </li>
+      </ul>
+-->
+    </div>
+<!--
+  </md-card-content>
+</md-card>
+-->

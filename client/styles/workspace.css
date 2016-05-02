@@ -1,0 +1,87 @@
+md-content.md-default-theme {
+  background-color: #eee;
+}
+
+md-card {
+  background-color: #fff;
+}
+md-card h2:first-of-type {
+  margin-top: 0;
+}
+
+md-toolbar .md-button.md-default-theme {
+  border-radius: 99%;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+.md-toolbar-tools-bottom {
+  font-size: small;
+}
+.md-toolbar-tools-bottom :last-child {
+  opacity: 0.8;
+}
+
+.md-toolbar-tools {
+  height: 40px;
+}
+
+md-toolbar:not(.md-hue-1),
+.md-fab {
+  fill: #fff;
+}
+
+md-sidenav {
+  fill: #737373;
+  /*max-width: 200px; */
+}
+md-sidenav ng-md-icon {
+  position: relative;
+  top: 5px;
+}
+
+.user-avatar {
+  border-radius: 99%;
+}
+
+/* Left Menu Tooltips */
+
+/* Tooltip text */
+.left-menu-tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 10;
+
+    top: 0px;
+    left: 60px;
+    height: 52px;
+    font-size: 16px;
+
+    max-width: 120px
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.left-menu-tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.md-dialog-container {
+  z-index: 2000 !important;
+}
+
+.md-dialog-backdrop {
+  z-index: 1999 !important;
+}
+
+/* not show error spacer for input container */
+md-input-container .md-errors-spacer {
+    min-height: 0;
+}

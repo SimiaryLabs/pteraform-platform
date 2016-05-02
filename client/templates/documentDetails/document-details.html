@@ -1,0 +1,105 @@
+<md-card>
+  <md-toolbar style="min-height: 0px">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="Settings">
+        <md-icon>settings</md-icon>
+      </md-button>
+      <h1 class="md-display-1">Document Details</h1>
+      <span flex></span>
+      <md-button class="md-icon-button" aria-label="Collapse">
+        <md-icon>keyboard_arrow_left</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <open-documents-panel></open-documents-panel>
+  <md-card-content style="padding:0px">
+
+      <div layout="row">
+
+        <div flex >
+          <div layout="column" class="md-whiteframe-z1">
+            <leaflet id="docmap" height="275px" tiles="tiles" defaults="mapDefaults" markers="mapMarkers" lf-center="mapCenter"></leaflet>
+            <div style="padding:16px">
+              <form name="documentDetailsForm" ng-submit="documentDetails.save()">
+                  <md-input-container class="md-block">
+                    <label>Document title</label>
+                    <input name="documentDetailsTitleInput" aria-label="editTitle" ng-model="documentDetails.doc.title" required>
+                  </md-input-container>
+                  <div ng-repeat="paragraphId in documentDetails.doc.paragraphs" >
+                      <marked-paragraph paragraph-id="paragraphId"></marked-paragraph>
+                  </div>
+                  <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                    <md-button class="md-primary" ng-disabled="!(documentDetails.changed())" ng-click="documentDetails.revert()" >
+                      REVERT
+                    </md-button>
+                    <md-button class="md-primary" ng-disabled="!(documentDetails.changed())" type="submit" >
+                      SAVE CHANGES
+                    </md-button>
+                  </section>
+              </form>
+
+
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <div class="md-whiteframe-z2 pt-accent pt-hue-1" style="color:white; z-index: 99; width:60px;">
+
+          <md-list>
+
+            <md-item >
+                <md-item-content layout="column" layout-align="start center">
+                  <div layout="column" class="inset">
+                    <div>
+                    <md-icon md-font-icon="pages">pages</md-icon>
+                  </div>
+                  <div class="md-body-2 md-caption">{{ documentDetails.doc.sections.length }} Sec.</div>
+                 </div>
+                </md-item-content>
+            </md-item>
+
+            <md-item >
+                <md-item-content layout="column" layout-align="start center">
+                  <div layout="column" class="inset">
+                    <div>
+                      <md-icon md-font-icon="local_library">local_library</md-icon>
+                    </div>
+                    <div class="md-body-2 md-caption">{{ documentDetails.doc.paragraphs.length }} Para.</div>
+                  </div>
+                </md-item-content>
+            </md-item>
+
+            <md-item >
+                <md-item-content layout="column" layout-align="start center">
+                  <div layout="column" class="inset">
+                    <div>
+                      <md-icon md-font-icon="message">message</md-icon>
+                    </div>
+                    <div class="md-body-2 md-caption">{{ documentDetails.doc.wordCount }} Words</div>
+                  </div>
+                </md-item-content>
+            </md-item>
+
+            <md-item >
+                <md-item-content layout="column" layout-align="start center">
+                  <div layout="column" class="inset">
+                    <div>
+                      <md-icon md-font-icon="location_on">location_on</md-icon>
+                    </div>
+                    <div class="md-body-2 md-caption">{{ documentDetails.placeRefCount }} Place refs.</div>
+                  </div>
+                </md-item-content>
+            </md-item>
+
+          </md-list>
+
+
+        </div>
+
+      </div>
+
+  </md-card-content>
+</md-card>

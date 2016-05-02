@@ -1,0 +1,43 @@
+.geomap-background {
+  fill: none;
+  pointer-events: all;
+}
+
+.geomap-unit {
+  cursor: pointer;
+  fill: #ccc;
+  stroke: #000;
+  stroke-width: 0.4px;
+}
+
+.geomap-legend-bg {
+  fill: #fff;
+  fill-opacity: 0.8;
+}
+
+.geomap-legend-bar {
+  stroke: #333;
+  stroke-width: 1px;
+}
+
+.svg-container { 
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	padding-bottom: 52%; 
+	vertical-align: top; 
+	overflow: hidden; 
+}
+
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+
+.svg-container text {
+  fill: #333;
+  font-size: 12px;
+}
+

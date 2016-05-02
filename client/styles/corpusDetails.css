@@ -1,0 +1,17 @@
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.greyitem {
+  background: #f5f5f5;
+}
+.pagination .active a {
+  background-color: rgb(95,112,167) !important;
+  border-color: rgb(95,112,167) !important;
+  color: #fff !important;
+}
+.pagination li a {
+  color: rgb(95,112,167) !important;
+}

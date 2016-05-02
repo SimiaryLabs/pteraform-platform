@@ -1,0 +1,64 @@
+<md-toolbar class="md-hue-2" style="height:40px; min-height:40px">
+  <span flex></span>
+  <div layout="column" class="md-toolbar-tools-bottom inset">
+    <span>Settings</span>
+  </div>
+</md-toolbar>
+
+
+<md-content flex layout="column" layout-padding>
+  <form name="changeSettingsForm" ng-submit="settings.save()">
+    <div flex>
+      <div flex class="md-body-2">
+        {{ settings.currentUser() | displayName }}
+      </div>
+<!--
+      <md-input-container class="md-block">
+        <label>username</label>
+        <input name="settingsUsername" aria-label="edit username" ng-model="settings.username" required>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Description</label>
+        <textarea name="settingsDescription" aria-label="edit Description" ng-model="settings.description"></textarea>
+      </md-input-container>
+-->
+      <label class="md-body-1" for="apiKey">API Key</label>
+      <div class="input-group">
+        <input type="text" readonly class="form-control" id="apiKey" placeholder="API Key" value="{{settings.apiKey}}">
+        <div class="input-group-addon regenerate-api-key" ng-click="settings.regenerateApiKeyConfirm($event)"><i class="fa fa-refresh"></i></div>
+      </div>
+
+<!--
+      <div flex layout="row" layout-sm="column" layout-align="center center">
+        <md-button class="md-raised" ng-click="settings.clear()" >
+          REVERT
+        </md-button>
+        <md-button class="md-primary md-raised" type="submit" >
+          SAVE
+        </md-button>
+      </div>
+-->
+    </div>
+  </form>
+</md-content>
+
+<!--<md-list>
+
+  <md-subheader>
+    Corpus List
+  </md-subheader>
+
+
+  <div>
+    <md-list-item class="md-2-line" dir-paginate="corpus in corpusList.corpora | itemsPerPage: corpusList.perPage" pagination-id="corpuspagination" total-items="corpusList.corpusCount" current-page="corpusList.clp">
+      <md-icon class="md-avatar-icon md-mini">pages</md-icon>
+      <div>
+      <p ng-click="corpusList.selectCorpus(corpus)" class="md-body-2">{{corpus.title}}</p>
+        <p class="md-list-item-text"> {{corpus.description}} </p>
+      </div>
+      <md-divider ng-if="!$last"></md-divider>
+    </md-list-item>
+    <dir-pagination-controls ng-if="corpusListSelected" on-page-change="corpusList.pageChanged(newPageNumber)" pagination-id="corpuspagination"></dir-pagination-controls>
+  </div>
+</md-list>-->

@@ -1,0 +1,68 @@
+<md-dialog aria-label="Import documents" flex="75">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Import documents</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-icon="close" aria-label="Close dialog">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <md-tabs md-selected="currentAddDocumentTab" md-dynamic-height md-border-bottom>
+        <md-tab label="Upload File" ng-disabled="true">
+          <md-content class="md-padding">
+            <h1 class="md-headline">Upload files from your local computer</h1>
+            <p>Feature to be added.</p>
+          </md-content>
+        </md-tab>
+        <md-tab label="Import raw text">
+          <md-content layout-padding>
+            <h1 class="md-headline">Paste the raw text of the document below</h1>
+            <form name="addDocumentRawText">
+                <div layout="column">
+                  <md-input-container class="md-block">
+                    <label>Document title</label>
+                    <input ng-model="rawText.title" required>
+                  </md-input-container>
+                  <md-input-container class="md-block">
+                    <label>Text</label>
+                    <textarea ng-model="rawText.text" required></textarea>
+                  </md-input-container>
+                  <md-input-container class="md-block">
+                    <label>Properties (JSON object)</label>
+                    <textarea ng-model="rawText.properties"></textarea>
+                  </md-input-container>
+                </div>
+            </form>
+          </md-content>
+        </md-tab>
+        <md-tab label="Import S3 Bucket" ng-disabled="true">
+          <md-content class="md-padding">
+            <h1 class="md-headline">Import from an S3 bucket</h1>
+            <p>Feature to be added</p>
+          </md-content>
+        </md-tab>
+        <md-tab label="Import Web Page" ng-disabled="true">
+          <md-content class="md-padding">
+            <h1 class="md-headline">Enter the url of the web page below</h1>
+            <p>Feature to be added</p>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+<!--
+      <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+        More on Wikipedia
+      </md-button>
+-->
+      <span flex></span>
+      <md-button ng-click="cancel()" >
+        Cancel
+      </md-button>
+      <md-button class="md-primary" ng-click="answer('useful')" style="margin-right:20px;" >
+        Add to corpus
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

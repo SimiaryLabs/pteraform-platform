@@ -1,0 +1,36 @@
+
+.pt-primary {
+  background-color: #526295;
+}
+
+.pt-primary.pt-hue-1 {
+  background-color: #7382b2;
+}
+
+.pt-primary.pt-hue-2 {
+  background-color: #313b5a;
+}
+
+.pt-primary.pt-hue-13 {
+  background-color: #f6f7fa;
+}
+
+.pt-accent {
+  background-color: #e7b418;
+}
+
+.pt-accent.pt-hue-1 {
+  background-color: #edc64f;
+}
+
+.pt-accent.pt-hue-2 {
+  background-color: #94730f ;
+}
+
+.pt-accent.pt-hue-3 {
+  background-color: #f9ebc3;
+}
+
+.left-menu-tooltip {
+  position: relative;
+}

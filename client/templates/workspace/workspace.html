@@ -1,0 +1,40 @@
+<div layout="column" class="relative" layout-fill role="main">
+
+  <top-menu></top-menu>
+
+  <div flex layout="row">
+    <left-menu></left-menu>
+
+    <div layout="column" flex>
+      <!--<top-action-menu></top-action-menu>-->
+
+      <md-content style="background-color:#f8f8f8; height:100%; background: url('/images/original.jpg') no-repeat center center fixed; background-size: cover;" flex>
+        <div layout="row" layout-sm="column">
+          <left-menu-extension></left-menu-extension>
+
+          <div flex="{{corpusFlex}}" ng-if="corpusSelected">
+            <corpus-details></corpus-details>
+          </div>
+          <div flex="{{documentFlex}}" layout="row" layout-md="column" ng-if="!noDocSelected"> <!--ng-if="!(noCorpusSelected && noDocSelected)" -->
+
+          <!-- <left-menu-extension layout="column" layout-padding layout-fill flex-gt-sm="10" flex-gt-md="30"></left-menu-extension> -->
+
+            <div flex layout="column"> <!-- ng-if="!noDocSelected"-->
+              <div flex>
+                <document-details></document-details>
+              </div>
+              <div flex></div> <!-- fill remainder -->
+            </div>
+          </div>
+
+          <!--<right-bar layout="column" layout-fill layout-padding flex-gt-sm="10" flex-gt-md="20" style="padding-right:0px"></right-bar>-->
+
+        </div>
+
+      </md-content>
+
+    </div>
+
+  </div>
+
+</div>

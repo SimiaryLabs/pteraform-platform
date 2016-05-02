@@ -1,0 +1,30 @@
+<md-toolbar class="md-hue-2" style="height:40px; min-height:40px">
+  <span flex></span>
+  <div layout="column" class="md-toolbar-tools-bottom inset">
+    <span>Create new corpus</span>
+  </div>
+</md-toolbar>
+
+<md-content flex layout="column" layout-padding>
+  <form name="createCorpusForm" ng-submit="createCorpus.save()"> 
+    <div flex>
+      <md-input-container class="md-block">
+        <label>Corpus title</label>
+        <input name="newCorpusTitleInput" aria-label="edit Title" ng-model="createCorpus.title" required>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Description</label>
+        <textarea name="newCorpusDescriptionInput" aria-label="edit Description" ng-model="createCorpus.description"></textarea>
+      </md-input-container>
+
+      <div flex layout="row" layout-sm="column" layout-align="center center">
+        <md-button class="md-raised" ng-click="createCorpus.clear()" >
+          CLEAR
+        </md-button>
+        <md-button class="md-primary md-raised" ng-disabled="!(createCorpus.title)" type="submit" >
+          CREATE
+        </md-button>
+      </div>
+    </div>
+  </form>
+</md-content>

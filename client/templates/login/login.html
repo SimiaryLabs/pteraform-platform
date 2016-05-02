@@ -1,0 +1,45 @@
+<md-content layout="row" style="background-color:#f8f8f8; height:100%; background: url('/images/original.jpg') no-repeat center center fixed; background-size: cover;" layout-align="center start">
+<!--<md-content layout="row" layout-align="center start" layout-margin> -->
+
+  <md-whiteframe style="background-color:#f8f8f8;" layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-4dp" >
+
+    <md-toolbar class="md-primary" layout="column" layout-align="end">
+      <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
+        <h3 class="md-display-3"> Sign in </h3>
+      </div>
+    </md-toolbar>
+    <div layout="column" layout-margin layout-padding>
+
+      <div layout="row" layout-margin>
+        <p class="md-body-2"> Sign in with your email</p>
+      </div>
+
+      <form name="loginForm" layout="column" layout-padding layout-margin novalidate>
+        <md-input-container>
+          <label> Email </label>
+          <input type="text" ng-model="login.credentials.email" aria-label="email" required/>
+        </md-input-container>
+        <md-input-container>
+          <label> Password </label>
+          <input type="password" ng-model="login.credentials.password" aria-label="password" required/>
+        </md-input-container>
+        <div layout="row" layout-align="space-between center">
+          <a class="md-button" href="/resetpw">Forgot password?</a>
+          <md-button class="md-raised md-primary" ng-click="login.login()" aria-label="login"
+                     ng-disabled="loginForm.$invalid">Sign In
+          </md-button>
+        </div>
+      </form>
+      <md-toolbar ng-show="login.showError()" class="md-warn" layout="row" layout-padding layout-margin>
+        <p class="md-body-1">{{ login.error }}</p>
+      </md-toolbar>
+      <md-divider></md-divider>
+      <div layout="row" layout-align="center">
+        <a class="md-button" href="/register">Need an account?</a>
+      </div>
+
+    </div>
+
+  </md-whiteframe>
+</md-content>
+

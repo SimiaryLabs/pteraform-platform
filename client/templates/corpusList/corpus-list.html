@@ -1,0 +1,94 @@
+<!-- This template is not currently called, but has been kept incase it becomes useful again -->
+
+<md-card>
+  <md-toolbar style="min-height: 0px">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="Settings">
+        <md-icon>settings</md-icon>
+      </md-button>
+      <h1 class="md-display-1">Corpora</h1>
+<!--
+      <span flex></span>
+      <md-button class="md-icon-button" aria-label="Collapse" ng-click="toggle('corpus')">
+        <md-icon ng-if="!corpusListSelected">keyboard_arrow_left</md-icon>
+        <md-icon ng-if="corpusListSelected">keyboard_arrow_right</md-icon>
+      </md-button>
+-->
+    </div>
+  </md-toolbar>
+
+  <md-card-content style="height: 700px; overflow: scroll; padding:0px">
+    <div layout="row">
+
+      <div flex="{{corpusListFlex}}" > <!-- ng-if="corpusListSelected" -->
+        <div layout="column">
+
+          <md-list>
+<!--
+            <md-subheader>
+              Corpus List
+              <md-button style="float:right" class="md-icon-button" aria-label="Collapse" ng-click="toggle('corpusList')">
+                <md-icon>keyboard_arrow_left</md-icon>
+              </md-button>
+            </md-subheader>
+-->
+
+            <div ng-if="corpusListSelected">
+              <md-list-item class="md-2-line" dir-paginate="corpus in corpusList.corpora | itemsPerPage: corpusList.perPage" pagination-id="corpuspagination" total-items="corpusList.corpusCount" current-page="corpusList.clp">
+                <md-icon class="md-avatar-icon">pages</md-icon>
+                <div class="md-list-item-text">
+                  <h3 ng-click="corpusList.selectCorpus(corpus)"> {{corpus.title}} </h3>
+                  <p> {{corpus.description}} </p>
+                </div>
+              </md-list-item>
+            </div>
+          </md-list>
+
+          <dir-pagination-controls ng-if="corpusListSelected" on-page-change="corpusList.pageChanged(newPageNumber)" pagination-id="corpuspagination"></dir-pagination-controls>
+        </div>
+
+        <div ng-if="corpusListSelected" flex ng-show="corpusList.isLoggedIn">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>Number of corpora: {{corpusList.corpusCount}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-8">
+              <form class="form-inline">
+                <div class="form-group">
+                  <label>Corpus title: </label>
+                  <input type="text" ng-model="corpusList.newCorpusTitle" />
+                </div>
+                <div class="form-group">
+                  <label>Corpus description: </label>
+                  <input type="text" ng-model="corpusList.newCorpusDescription" />
+                </div>
+              </form>
+            </div>
+            <div class="col-xs-4 ma-add-button-container">
+              <button class="btn" ng-click="corpusList.createCorpus()"><i
+                      class="fa fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div flex="{{corpusDetailsFlex}}" ng-if="!noCorpusSelected">
+        <corpus-details></corpus-details>
+      </div>
+
+      <div flex></div>
+
+
+
+      <div class="md-whiteframe-z2 pt-accent pt-hue-1" style="color:white; width:60px;">
+
+      </div>
+
+  </div>
+
+  </md-card-content>
+</md-card>

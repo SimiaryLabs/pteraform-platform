@@ -1,0 +1,36 @@
+<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" style="height:100%">
+<!-- <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" > -->
+
+<!--
+  <md-toolbar class="md-hue-2" style="height:40px; min-height:40px">
+    <span flex></span>
+    <div layout="column" class="md-toolbar-tools-bottom inset">
+      <span>Corpus List</span>
+    </div>
+    <md-button style="float:right" class="md-icon-button" aria-label="Collapse" ng-click="toggle('corpusList')">
+      <md-icon>keyboard_arrow_left</md-icon>
+    </md-button>
+  </md-toolbar>
+-->
+
+  <md-list>
+<!--
+    <md-subheader>
+      Corpus List
+    </md-subheader>
+-->
+
+    <div>
+      <md-list-item class="md-2-line" dir-paginate="corpus in corpusList.corpora | itemsPerPage: corpusList.perPage" pagination-id="corpuspagination" total-items="corpusList.corpusCount" current-page="corpusList.clp">
+        <md-icon class="md-avatar-icon md-mini">pages</md-icon>
+        <div>
+        <p ng-click="corpusList.selectCorpus(corpus)" class="md-body-2">{{corpus.title}}</p>
+          <p class="md-list-item-text"> {{corpus.description}} </p>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+      <dir-pagination-controls ng-if="corpusListSelected" on-page-change="corpusList.pageChanged(newPageNumber)" pagination-id="corpuspagination"></dir-pagination-controls>
+    </div>
+  </md-list>
+
+</md-sidenav>

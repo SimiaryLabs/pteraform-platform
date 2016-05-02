@@ -1,0 +1,30 @@
+<div class="pt-accent" layout="column" style="width: 60px;">
+  <md-list class="pt-accent" flex style="height:100%">
+    <md-item ng-repeat="item in menu">
+      <a ng-mouseenter="openLeftSidenav(item.content)" ng-click="toggleLeftSidenav()">
+        <md-item-content class="left-menu-tooltip" md-ink-ripple layout="row" layout-align="start center"
+                          ng-class="{'pt-accent pt-hue-2': hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+          <div class="inset">
+            <md-icon  style="height: 32px; font-size:32px">{{item.icon}}</md-icon>
+          </div>
+          <span class="tooltiptext pt-accent pt-hue-2">{{item.title}}</span>
+        </md-item-content>
+      </a>
+    </md-item>
+<!--
+    <md-divider></md-divider>
+    <md-item ng-repeat="item in admin">
+      <a>
+        <md-item-content class="left-menu-tooltip" md-ink-ripple layout="row" layout-align="start center"
+                        ng-class="{'pt-accent pt-hue-2': hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+          <div class="inset">
+            <md-icon style="height: 32px; font-size:32px">{{item.icon}}</md-icon>
+          </div>
+          <span class="tooltiptext pt-accent pt-hue-2">{{item.title}}</span>
+        </md-item-content>
+      </a>
+    </md-item>
+-->
+  </md-list>
+  <div flex></div>
+</div>
